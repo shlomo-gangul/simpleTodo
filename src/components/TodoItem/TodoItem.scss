@@ -1,0 +1,44 @@
+.listitem {
+  margin: 5px;
+  padding: 10px;
+  min-width: 400px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+  order: 3;
+}
+.doneListitem {
+  margin: 5px;
+  padding: 10px;
+  min-width: 400px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+  order: 1;
+}
+.listitem > button {
+  height: 40px;
+  width: 60px;
+  background-color: red;
+  border-radius: 5px;
+  border: none;
+}
+.listitem > button:hover {
+  cursor: pointer;
+  transform: scale(0.98);
+}
+.doneFont {
+  text-decoration: line-through;
+}
+
+.buttonsDiv {
+  display: flex;
+  width: 30%;
+}
+.buttonsDiv > button {
+  height: 40px;
+  width: 60px;
+  background-color: red;
+  border-radius: 5px;
+  border: none;
+}
