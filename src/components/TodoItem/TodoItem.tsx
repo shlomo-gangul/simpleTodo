@@ -1,47 +1,27 @@
 import React, { useState } from 'react';
-import { Item } from '../../interfaces/item';
+import { TodoItem as ITodoItem } from '../../interfaces/todoItem';
+import Button from '../Button/Button';
 import s from './TodoItem.scss';
 
-interface IProps {
-  item: Item;
-  todoItems: Item[];
-  setTodoItems: React.Dispatch<React.SetStateAction<Item[]>>;
-}
-
-const TodoItem: React.FC<IProps> = ({ item, todoItems, setTodoItems }) => {
-  const [todoItem, setTodoItem] = useState(item);
-  const onDoneTodoClick = () => {
-    const updatedTodoItems = todoItems.filter((listItem) => {
-      if (listItem.id !== todoItem.id) {
-        setTodoItem({ ...todoItem, status: false });
-      }
-      return todoItem;
-    });
-    setTodoItems(updatedTodoItems);
-    console.log('update', todoItems);
+const TodoItem: ITodoItem = ({ item, done, redo, onDelete }) => {
+  const onDoneClick = () => {
+    done(item.id);
   };
-  const redoDoneTodoClick = () => {
-    setTodoItem({ ...todoItem, status: true });
+  const onRedoClick = () => {
+    redo(item.id);
   };
-  const onDeleteTodoClick = () => {
-    const todoItemsAfterfilter = todoItems.filter(
-      (listItem) => listItem.id !== todoItem.id
-    );
-    setTodoItems(todoItemsAfterfilter);
-    console.log('filter', todoItems);
+  const onDeleteClick = () => {
+    onDelete(item.id);
   };
-
   return (
-    <li className={todoItem.status ? s.listitem : s.doneListitem}>
-      <p className={todoItem.status ? '' : s.doneFont}>{todoItem.content}</p>
-      {todoItem.status ? (
-        <button value={todoItem.content} onClick={onDoneTodoClick}>
-          done
-        </button>
+    <li className={item.status ? s.listitem : s.doneListitem}>
+      <p className={item.status ? '' : s.doneFont}>{item.content}</p>
+      {item.status ? (
+        <Button onClick={onDoneClick} text="done" />
       ) : (
         <div className={s.buttonsDiv}>
-          <button onClick={redoDoneTodoClick}>Redo</button>
-          <button onClick={onDeleteTodoClick}>Delete</button>
+          <Button onClick={onRedoClick} text="Redo" />
+          <Button onClick={onDeleteClick} text="Delete" />
         </div>
       )}
     </li>

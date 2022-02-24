@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 interface Props {
-  onClick: () => void;
+  onClick: (e: any) => void;
   text: String;
 }
 export type Button = FC<Props>;

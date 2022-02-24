@@ -1,7 +1,7 @@
 import React, { useState, FC } from 'react';
 import { Item } from '../../interfaces/item';
 import s from './AddTodoItemToList.scss';
-import AddTodoInput from '../AddTodoinput/AddTodoInput';
+import Input from '../Input/Input';
 import Butoon from '../Button/Button';
 
 interface IProps {
@@ -22,10 +22,7 @@ const AddTodoItemToList: FC<IProps> = ({ addTodoItem }) => {
 
   return (
     <div className={s.addTodoContainer}>
-      <AddTodoInput
-        addTodoInput={addTodoInput}
-        setAddTodoInput={setAddTodoInput}
-      />
+      <Input input={addTodoInput} setInput={setAddTodoInput} />
       <Butoon onClick={onAddTodoClick} text="Add" />
     </div>
   );

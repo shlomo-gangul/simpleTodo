@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import TodoItem from '../TodoItem/TodoItem';
+import TodoList from '../TodoList/TodoList';
 import AddTodoItemToList from '../AddTodoItemToList/AddTodoItemToList';
 import s from './TodoContainer.scss';
 import { Item } from '../../interfaces/item';
@@ -12,19 +12,45 @@ const TodoContainer: React.FC = () => {
   };
   console.log('container', todoItems);
 
+  const onDoneClick = (id: number) => {
+    console.log(id);
+
+    const updatedTodoItems = todoItems.filter((todoItem) => {
+      if (todoItem.id === id) {
+        todoItem.status = false;
+      }
+      return todoItem;
+    });
+    setTodoItems(updatedTodoItems);
+    console.log('update', todoItems);
+  };
+  const onRedoDoneClick = (id: number) => {
+    const redoTodoItems = todoItems.filter((todoItem) => {
+      if (todoItem.id === id) {
+        todoItem.status = true;
+      }
+      return todoItem;
+    });
+    setTodoItems(redoTodoItems);
+    console.log('redo', todoItems);
+  };
+  const onDeleteClick = (id: number) => {
+    const todoItemsAfterfilter = todoItems.filter(
+      (todoItem) => todoItem.id !== id
+    );
+    setTodoItems(todoItemsAfterfilter);
+    console.log('filter', todoItems);
+  };
+
   return (
     <div className={s.mainTodoContanier}>
       <AddTodoItemToList addTodoItem={addTodoItem} />
-      <ul className={s.todoContainerList}>
-        {todoItems.map((item, index) => (
-          <TodoItem
-            key={index}
-            item={item}
-            todoItems={todoItems}
-            setTodoItems={setTodoItems}
-          />
-        ))}
-      </ul>
+      <TodoList
+        todoItems={todoItems}
+        done={onDoneClick}
+        redo={onRedoDoneClick}
+        onDelete={onDeleteClick}
+      />
     </div>
   );
 };
