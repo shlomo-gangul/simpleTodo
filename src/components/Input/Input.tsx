@@ -1,5 +1,4 @@
-import React, { useState, FC } from 'react';
-import { Item } from '../../interfaces/item';
+import React from 'react';
 import s from './Input.scss';
 import { Input } from '../../interfaces/input';
 

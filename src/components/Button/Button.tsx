@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import s from './Button.scss';
 import { Button as IButton } from '../../interfaces/button';
 

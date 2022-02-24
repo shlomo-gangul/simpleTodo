@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TodoItem as ITodoItem } from '../../interfaces/todoItem';
 import Button from '../Button/Button';
 import s from './TodoItem.scss';

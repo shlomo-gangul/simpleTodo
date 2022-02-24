@@ -1,14 +1,8 @@
-import React, { useState, FC } from 'react';
+import React from 'react';
 import TodoItem from '../TodoItem/TodoItem';
-import { Item } from '../../interfaces/item';
+import { TodoList as ITodoList } from '../../interfaces/todoList';
 
-interface IProps {
-  todoItems: Item[];
-  done: (e: any) => void;
-  redo: (e: any) => void;
-  onDelete: (e: any) => void;
-}
-const TodoList: FC<IProps> = ({ todoItems, done, redo, onDelete }) => {
+const TodoList: ITodoList = ({ todoItems, done, redo, onDelete }) => {
   return (
     <ul>
       {todoItems.map((item, index) => (
