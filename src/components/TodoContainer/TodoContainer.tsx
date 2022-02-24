@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import TodoList from '../TodoList/TodoList';
-import AddTodoItemToList from '../AddTodoItemToList/AddTodoItemToList';
+import AddTodo from '../AddTodo/AddTodo';
 import s from './TodoContainer.scss';
 import { Item } from '../../interfaces/item';
 
@@ -13,8 +13,6 @@ const TodoContainer: React.FC = () => {
   console.log('container', todoItems);
 
   const onDoneClick = (id: number) => {
-    console.log(id);
-
     const updatedTodoItems = todoItems.filter((todoItem) => {
       if (todoItem.id === id) {
         todoItem.status = false;
@@ -24,6 +22,7 @@ const TodoContainer: React.FC = () => {
     setTodoItems(updatedTodoItems);
     console.log('update', todoItems);
   };
+
   const onRedoDoneClick = (id: number) => {
     const redoTodoItems = todoItems.filter((todoItem) => {
       if (todoItem.id === id) {
@@ -34,6 +33,7 @@ const TodoContainer: React.FC = () => {
     setTodoItems(redoTodoItems);
     console.log('redo', todoItems);
   };
+
   const onDeleteClick = (id: number) => {
     const todoItemsAfterfilter = todoItems.filter(
       (todoItem) => todoItem.id !== id
@@ -44,11 +44,11 @@ const TodoContainer: React.FC = () => {
 
   return (
     <div className={s.mainTodoContanier}>
-      <AddTodoItemToList addTodoItem={addTodoItem} />
+      <AddTodo addTodoItem={addTodoItem} />
       <TodoList
         todoItems={todoItems}
-        done={onDoneClick}
-        redo={onRedoDoneClick}
+        onDone={onDoneClick}
+        onRedo={onRedoDoneClick}
         onDelete={onDeleteClick}
       />
     </div>

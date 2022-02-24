@@ -3,8 +3,8 @@ import { Item } from './item';
 
 interface Props {
   todoItems: Item[];
-  done: (e: number) => void;
-  redo: (e: number) => void;
+  onDone: (e: number) => void;
+  onRedo: (e: number) => void;
   onDelete: (e: number) => void;
 }
 

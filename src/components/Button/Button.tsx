@@ -1,10 +1,9 @@
 import React from 'react';
-import s from './Button.scss';
 import { Button as IButton } from '../../interfaces/button';
 
-const Button: IButton = ({ onClick, text }) => {
+const Button: IButton = ({ className = '', onClick, text }) => {
   return (
-    <button className={s.Button} onClick={onClick}>
+    <button className={className} onClick={onClick}>
       {text}
     </button>
   );

@@ -3,12 +3,12 @@ import { TodoItem as ITodoItem } from '../../interfaces/todoItem';
 import Button from '../Button/Button';
 import s from './TodoItem.scss';
 
-const TodoItem: ITodoItem = ({ item, done, redo, onDelete }) => {
+const TodoItem: ITodoItem = ({ item, onDone, onRedo, onDelete }) => {
   const onDoneClick = () => {
-    done(item.id);
+    onDone(item.id);
   };
   const onRedoClick = () => {
-    redo(item.id);
+    onRedo(item.id);
   };
   const onDeleteClick = () => {
     onDelete(item.id);
