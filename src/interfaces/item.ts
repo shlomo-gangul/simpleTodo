@@ -1,5 +1,5 @@
 export interface Item {
   content: string;
-  status: boolean;
+  status: 'ADDED' | 'COMPLETED' | 'DELETED';
   id: number;
 }

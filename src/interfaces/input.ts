@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import { Item } from './item';
 
 interface Props {
-  input: Item;
-  setInput: React.Dispatch<React.SetStateAction<Item>>;
+  value: string;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 export type Input = FC<Props>;

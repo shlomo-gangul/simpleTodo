@@ -1,13 +1,4 @@
-.listitem {
-  margin: 5px;
-  padding: 10px;
-  min-width: 400px;
-  display: flex;
-  justify-content: space-between;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
-  order: 3;
-}
-.doneListitem {
+.listItem {
   margin: 5px;
   padding: 10px;
   min-width: 400px;
@@ -16,14 +7,23 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
   order: 1;
 }
-.listitem > button {
+.doneListItem {
+  margin: 5px;
+  padding: 10px;
+  min-width: 400px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+  order: 99;
+}
+.listItem button {
   height: 40px;
   width: 60px;
   background-color: red;
   border-radius: 5px;
   border: none;
 }
-.listitem > button:hover {
+.listItem button:hover {
   cursor: pointer;
   transform: scale(0.98);
 }
@@ -31,14 +31,15 @@
   text-decoration: line-through;
 }
 
-.buttonsDiv {
+.buttons {
   display: flex;
   width: 30%;
 }
-.buttonsDiv > button {
+.buttons > button {
   height: 40px;
   width: 60px;
-  background-color: red;
+  background-color: yellow;
   border-radius: 5px;
+  margin: 5px;
   border: none;
 }

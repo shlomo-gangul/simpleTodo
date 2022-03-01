@@ -1,30 +1,28 @@
 import React, { useState, FC } from 'react';
 import s from './AddTodo.scss';
-import Input from '../Input/Input';
-import Butoon from '../Button/Button';
+import Input from '../TextInput/TextInput';
+import Button from '../Button/Button';
 
 interface IProps {
-  addTodoItem: Function;
+  addItem: (value: string) => void;
 }
 
-const AddTodoItemToList: FC<IProps> = ({ addTodoItem }) => {
-  const [addTodoInput, setAddTodoInput] = useState({
-    content: '',
-    status: true,
-    id: Math.random() * 50,
-  });
+const AddTodo: FC<IProps> = ({ addItem }) => {
+  const [value, setValue] = useState('');
 
   const onAddTodoClick = () => {
-    addTodoItem(addTodoInput);
-    setAddTodoInput({ content: '', status: true, id: Math.random() * 50 });
+    addItem(value);
+    setValue('');
   };
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setValue(e.target.value);
 
   return (
-    <div className={s.addTodoContainer}>
-      <Input input={addTodoInput} setInput={setAddTodoInput} />
-      <Butoon className={s.addTodoButton} onClick={onAddTodoClick} text="Add" />
+    <div className={s.onAddTodoContainer}>
+      <Input value={value} onChange={onChange} />
+      <Button className={s.button} onClick={onAddTodoClick} text="Add" />
     </div>
   );
 };
 
-export default AddTodoItemToList;
+export default AddTodo;

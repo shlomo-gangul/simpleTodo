@@ -1,55 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TodoList from '../TodoList/TodoList';
 import AddTodo from '../AddTodo/AddTodo';
 import s from './TodoContainer.scss';
 import { Item } from '../../interfaces/item';
+import { ADDED, COMPLETED, DELETED } from '../../consts';
 
 const TodoContainer: React.FC = () => {
-  const [todoItems, setTodoItems] = useState<Item[]>([]);
+  const [items, setItems] = useState<Item[]>([]);
 
-  const addTodoItem = (newTodo: Item) => {
-    setTodoItems([...todoItems, newTodo]);
+  const addItem = (value: string) => {
+    setItems([
+      ...items,
+      { content: value, status: ADDED, id: Math.random() * 50 },
+    ]);
   };
-  console.log('container', todoItems);
+  console.log('container', items);
 
-  const onDoneClick = (id: number) => {
-    const updatedTodoItems = todoItems.filter((todoItem) => {
-      if (todoItem.id === id) {
-        todoItem.status = false;
-      }
-      return todoItem;
-    });
-    setTodoItems(updatedTodoItems);
-    console.log('update', todoItems);
-  };
+  const modifyStatus = (
+    items: Item[],
+    id: Item['id'],
+    status: Item['status']
+  ) => items.filter((item) => (item.id === id ? (item.status = status) : item));
 
-  const onRedoDoneClick = (id: number) => {
-    const redoTodoItems = todoItems.filter((todoItem) => {
-      if (todoItem.id === id) {
-        todoItem.status = true;
-      }
-      return todoItem;
-    });
-    setTodoItems(redoTodoItems);
-    console.log('redo', todoItems);
-  };
+  const onAdd = (id: number) => setItems(modifyStatus(items, id, ADDED));
 
-  const onDeleteClick = (id: number) => {
-    const todoItemsAfterfilter = todoItems.filter(
-      (todoItem) => todoItem.id !== id
-    );
-    setTodoItems(todoItemsAfterfilter);
-    console.log('filter', todoItems);
-  };
+  const onComplete = (id: number) =>
+    setItems(modifyStatus(items, id, COMPLETED));
+
+  const onDelete = (id: number) => setItems(modifyStatus(items, id, DELETED));
 
   return (
     <div className={s.mainTodoContanier}>
-      <AddTodo addTodoItem={addTodoItem} />
+      <AddTodo addItem={addItem} />
       <TodoList
-        todoItems={todoItems}
-        onDone={onDoneClick}
-        onRedo={onRedoDoneClick}
-        onDelete={onDeleteClick}
+        items={items}
+        onDone={onComplete}
+        onRedo={onAdd}
+        onDelete={onDelete}
       />
     </div>
   );
