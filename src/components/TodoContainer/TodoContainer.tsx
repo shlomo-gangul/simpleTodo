@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import TodoList from '../TodoList/TodoList';
 import AddTodo from '../AddTodo/AddTodo';
-import s from './TodoContainer.scss';
+import s from './todo-container.scss';
 import { Item } from '../../interfaces/item';
 import { ADDED, COMPLETED, DELETED } from '../../consts';
 
@@ -30,7 +30,7 @@ const TodoContainer: React.FC = () => {
   const onDelete = (id: number) => setItems(modifyStatus(items, id, DELETED));
 
   return (
-    <div className={s.mainTodoContanier}>
+    <div className={s.todoContanier}>
       <AddTodo addItem={addItem} />
       <TodoList
         items={items}

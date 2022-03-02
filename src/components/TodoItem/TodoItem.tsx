@@ -1,7 +1,7 @@
 import React from 'react';
 import { TodoItem as ITodoItem } from '../../interfaces/todoItem';
 import Button from '../Button/Button';
-import s from './TodoItem.scss';
+import s from './todo-item.scss';
 import { ADDED, COMPLETED } from '../../consts';
 
 const TodoItem: ITodoItem = ({ item, onDone, onRedo, onDelete }) => {

@@ -1,13 +1,10 @@
 import React, { useState, FC } from 'react';
-import s from './AddTodo.scss';
+import s from './add-todo.scss';
 import Input from '../TextInput/TextInput';
 import Button from '../Button/Button';
+import { AddTodo as IAddTodo } from '../../interfaces/addTodo';
 
-interface IProps {
-  addItem: (value: string) => void;
-}
-
-const AddTodo: FC<IProps> = ({ addItem }) => {
+const AddTodo: IAddTodo = ({ addItem }) => {
   const [value, setValue] = useState('');
 
   const onAddTodoClick = () => {
@@ -18,7 +15,7 @@ const AddTodo: FC<IProps> = ({ addItem }) => {
     setValue(e.target.value);
 
   return (
-    <div className={s.onAddTodoContainer}>
+    <div className={s.addTodo}>
       <Input value={value} onChange={onChange} />
       <Button className={s.button} onClick={onAddTodoClick} text="Add" />
     </div>

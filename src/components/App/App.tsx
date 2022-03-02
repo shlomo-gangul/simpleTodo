@@ -9,7 +9,7 @@ class App extends React.Component<AppProps> {
   render() {
     return (
       <div className={s.App}>
-        <h1 className={s.todoContainerTitle}>simple todo list</h1>
+        <h1 className={s.title}>simple todo list</h1>
         <TodoContainer />
       </div>
     );

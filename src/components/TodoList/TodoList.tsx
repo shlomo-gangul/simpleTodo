@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoItem from '../TodoItem/TodoItem';
 import { TodoList as ITodoList } from '../../interfaces/todoList';
-import s from './TodoList.scss';
+import s from './todo-list.scss';
 import { DELETED } from '../../consts';
 
 const TodoList: ITodoList = ({ items, onDone, onRedo, onDelete }) => {
