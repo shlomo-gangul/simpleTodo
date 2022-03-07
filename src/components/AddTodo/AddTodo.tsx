@@ -2,9 +2,8 @@ import React, { useState, FC } from 'react';
 import s from './add-todo.scss';
 import Input from '../TextInput/TextInput';
 import Button from '../Button/Button';
-import { AddTodo as IAddTodo } from '../../interfaces/addTodo';
 
-const AddTodo: IAddTodo = ({ addItem }) => {
+const AddTodo: FC<{ addItem: (value: string) => void }> = ({ addItem }) => {
   const [value, setValue] = useState('');
 
   const onAddTodoClick = () => {

@@ -5,27 +5,23 @@
   display: flex;
   justify-content: space-between;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
-  order: 1;
 }
-.doneListItem {
-  margin: 5px;
-  padding: 10px;
-  min-width: 400px;
-  display: flex;
-  justify-content: space-between;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
-  order: 99;
-}
-.listItem button {
+
+.buttons button {
   height: 40px;
   width: 60px;
-  background-color: red;
   border-radius: 5px;
+  margin: 5px;
   border: none;
 }
 .listItem button:hover {
   cursor: pointer;
-  transform: scale(0.98);
+  transform: scale(1.1);
+}
+
+.listItem button:active {
+  cursor: pointer;
+  transform: scale(0.99);
 }
 .doneFont {
   text-decoration: line-through;
@@ -35,11 +31,13 @@
   display: flex;
   width: 30%;
 }
-.buttons > button {
-  height: 40px;
-  width: 60px;
-  background-color: yellow;
-  border-radius: 5px;
-  margin: 5px;
-  border: none;
+
+.doneButton {
+  background-color: green;
+}
+.redoButton {
+  background-color: orange;
+}
+.deleteButton {
+  background-color: red;
 }
